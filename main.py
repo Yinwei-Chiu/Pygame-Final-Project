@@ -10,7 +10,7 @@ pygame.init()
 pygame.font.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Game!!")
+pygame.display.set_caption("台南美食大冒險 - Tainan Food Adventure")
 clock = pygame.time.Clock()
 
 user = User()
@@ -40,7 +40,6 @@ while running:
             controller.create_new_game()
             controller.start_game()
             
-        
         init_menu.draw(screen)
 
     else:

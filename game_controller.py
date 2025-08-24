@@ -1,47 +1,111 @@
 import pygame
 from game_model import GameModel
 from game_view import GameView
+from Config import *
+
+class QuitMenu:
+    def __init__(self):
+        self.active = False
+        
+    def draw(self, surface):
+        if not self.active:
+            return
+            
+        # 半透明背景覆蓋
+        overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+        overlay.set_alpha(180)
+        overlay.fill((0, 0, 0))
+        surface.blit(overlay, (0, 0))
+        
+        # 選單背景框
+        menu_width = 400
+        menu_height = 200
+        menu_x = (SCREEN_WIDTH - menu_width) // 2
+        menu_y = (SCREEN_HEIGHT - menu_height) // 2
+        
+        pygame.draw.rect(surface, (50, 50, 50), (menu_x, menu_y, menu_width, menu_height))
+        pygame.draw.rect(surface, WHITE, (menu_x, menu_y, menu_width, menu_height), 3)
+        
+        # 標題
+        self.draw_text(surface, "Game Paused", 32, WHITE, menu_x + menu_width//2, menu_y + 40)
+        
+        # 選項
+        self.draw_text(surface, "C - Continue Game", 24, WHITE, menu_x + menu_width//2, menu_y + 90)
+        self.draw_text(surface, "M - Return to Main Menu", 24, WHITE, menu_x + menu_width//2, menu_y + 120)
+        self.draw_text(surface, "Q - Quit Game", 24, WHITE, menu_x + menu_width//2, menu_y + 150)
+    
+    def draw_text(self, surface, text, size, color, x, y):
+        try:
+            font = pygame.font.Font("Font/BoutiqueBitmap9x9_Bold_1.9.ttf", size)
+        except:
+            font = pygame.font.Font(None, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.centerx = x
+        text_rect.top = y
+        surface.blit(text_surface, text_rect)
+    
+    def show(self):
+        self.active = True
+    
+    def hide(self):
+        self.active = False
 
 class GameController:
     def __init__(self, user, model, view):
         self.user = user
         self.model = model
         self.view = view
+        self.quit_menu = QuitMenu()
 
     def handle_events(self, events, keys):
         for event in events:
             if event.type == pygame.QUIT:
                 self.user.save_data()
                 return "QUIT"
+            
+            if event.type == pygame.KEYDOWN:
+                # 處理退出選單中的按鍵
+                if self.quit_menu.active:
+                    if event.key == pygame.K_c:
+                        self.quit_menu.hide()
+                        return None
+                    elif event.key == pygame.K_m:
+                        self.quit_menu.hide()
+                        return "MENU"
+                    elif event.key == pygame.K_q:
+                        self.user.save_data()
+                        return "QUIT"
+                    return None
+                
+                # 正常遊戲中的按鍵
+                if event.key == pygame.K_r and not self.model.run:
+                    # R鍵重新開始
+                    self.model.reset()
+                
+                elif event.key == pygame.K_q:
+                    if not self.model.run:
+                        # 遊戲結束畫面時，Q鍵回到主選單
+                        self.model.wait = False
+                        return "MENU"
+                    else:
+                        # 遊戲進行中時，Q鍵顯示退出選單
+                        self.quit_menu.show()
+                        return None
 
-        if keys[pygame.K_r] and not self.model.run:
-            if self.model.is_pass:
-                # 玩家按 R 開始下一關
-                self.create_new_game()
-
-            else:
-                # 玩家按 R 重玩這一關
-                self.model.reset()
-
-
-        if keys[pygame.K_q] and not self.model.run:
-            self.model.wait = False
-            return "MENU"
-    
+        return None
 
     def start_game(self):
         self.model.reset()
 
-
     def create_new_game(self):
-        # 建立新的 Model，對應 user 的目前 level
         self.model = GameModel(self.user)
         self.model.play_BGM()
 
-
     def update(self):
-        if self.model.run:
+        if self.model.run and not self.quit_menu.active:
             self.model.update()
 
     def draw(self, surface):
         self.view.draw(self.model, surface)
+        self.quit_menu.draw(surface)

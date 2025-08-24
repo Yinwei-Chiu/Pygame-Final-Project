@@ -1,24 +1,23 @@
 LEVELS = {
     1: {
         "background": "Image/road_background.png",
-        "enemies": ["coffin_bread", "mango_ice"],  # 台南美食
-        "boss": "Boss1",  # 只有一個Boss
-        "boss_time": 5000,  # 5秒後Boss出現（改短一點方便測試）
-        "enemy_delay": (1600, 3000)  # 刷新頻率*0.5 (原本800-1500，現在1600-3000)
+        "enemies": ["coffin_bread", "mango_ice"],  # 保持原名稱以維持兼容性，實際是台南美食
+        "boss": "Boss",  # 只有一個Boss
+        "boss_time": 5000,  # 5秒後Boss出現
+        "enemy_delay": (1500, 2500)  # 食物刷新間隔
     },
-    # 第二關之後可以以後再加
     2: {
         "background": "Image/road_background.png", 
-        "enemies": ["coffin_bread", "mango_ice"],
-        "boss": "Boss1",  # 同樣的Boss
+        "enemies": ["noodle", "oyster_omlete"],
+        "boss": "Boss",
         "boss_time": 8000,  # 8秒後Boss出現
-        "enemy_delay": (1200, 2400)  # 刷新頻率*0.5 (原本600-1200，現在1200-2400)
+        "enemy_delay": (1200, 2000)  # 食物刷新間隔
     }, 
     3: {
-        "background": "Image/road_background.png",
-        "enemies": ["coffin_bread", "mango_ice"],
-        "boss": "Boss1",  # 同樣的Boss
+        "background": "Image/background/kom_temple.png",
+        "enemies": ["rice_cake", "shrimp_rool"],
+        "boss": "Boss",
         "boss_time": 6000,  # 6秒後Boss出現
-        "enemy_delay": (1000, 2000)  # 刷新頻率*0.5 (原本500-1000，現在1000-2000)
+        "enemy_delay": (1000, 1800)  # 食物刷新間隔
     }
 }

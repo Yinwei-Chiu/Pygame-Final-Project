@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<!DOCTYPE graph PUBLIC "-//John Punin//DTD graph description//EN" "http://www.cs.rpi.edu/~puninj/XGMML/xgmml.dtd">
+
+    <graph directed="1" graphic="1" Layout="points">
+
+        <node id="SpoonItem" label="SpoonItem&#xa;⎯⎯⎯&#xa;blink_delay&#xa;blink_time&#xa;ground_y&#xa;image&#xa;rect&#xa;speedx&#xa;speedy&#xa;value&#xa;visible&#xa;⎯⎯⎯&#xa;__init__&#xa;draw&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="204" y="58" h="210" w="96" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="blink_delay,blink_time,ground_y,image,rect,speedx,speedy,value,visible"/>
+            <att name="meths" value="__init__,draw,update"/>
+
+            <att name="width" value="86"/>
+            <att name="height" value="174"/>
+        </node>
+        <node id="pygame.sprite.Sprite" label="pygame.sprite.Sprite" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="354" y="177" h="36" w="188" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value=""/>
+
+            <att name="width" value="178"/>
+            <att name="height" value="24"/>
+        </node>
+        <node id="random.randint" label="random.randint" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="287" y="281" h="36" w="138" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value=""/>
+
+            <att name="width" value="128"/>
+            <att name="height" value="24"/>
+        </node>
+        <node id="random.choice" label="random.choice" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="157" y="10" h="36" w="129" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value=""/>
+
+            <att name="width" value="119"/>
+            <att name="height" value="24"/>
+        </node>
+        <node id="Progress" label="Progress&#xa;⎯⎯⎯&#xa;boss_time&#xa;time&#xa;x&#xa;y&#xa;⎯⎯⎯&#xa;__init__&#xa;draw&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="17" y="27" h="160" w="87" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="boss_time,time,x,y"/>
+            <att name="meths" value="__init__,draw,update"/>
+
+            <att name="width" value="77"/>
+            <att name="height" value="124"/>
+        </node>
+        <node id="SpoonBullet" label="SpoonBullet&#xa;⎯⎯⎯&#xa;damage&#xa;image&#xa;rect&#xa;speedx&#xa;⎯⎯⎯&#xa;__init__&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="324" y="13" h="150" w="112" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="damage,image,rect,speedx"/>
+            <att name="meths" value="__init__,update"/>
+
+            <att name="width" value="102"/>
+            <att name="height" value="114"/>
+        </node>
+        <node id="Player" label="Player&#xa;⎯⎯⎯&#xa;ammo&#xa;bullet_delay&#xa;bullet_group&#xa;bullet_ready&#xa;bullet_time&#xa;dash_direction&#xa;dash_distance&#xa;dash_remaining&#xa;dash_speed&#xa;double_click_window&#xa;gravity&#xa;ground_y&#xa;hunger&#xa;hunger_decay_rate&#xa;image&#xa;is_dashing&#xa;is_jumping&#xa;is_shooting&#xa;is_stomping&#xa;jump_strength&#xa;last_hunger_time&#xa;last_left_press&#xa;last_right_press&#xa;left_click_count&#xa;left_key_pressed&#xa;lives&#xa;max_ammo&#xa;max_hunger&#xa;rect&#xa;right_click_count&#xa;right_key_pressed&#xa;shoot_animation_duration&#xa;shoot_animation_time&#xa;shoot_sound&#xa;speed&#xa;stomp_cooldown&#xa;stomp_cooldown_duration&#xa;stomp_cooldown_time&#xa;stomp_damage&#xa;velocity_y&#xa;⎯⎯⎯&#xa;__init__&#xa;add_ammo&#xa;apply_gravity&#xa;change_image&#xa;check_double_click&#xa;constrain_movement&#xa;eat_food&#xa;get_user_input&#xa;jump_down&#xa;jump_up&#xa;perform_dash&#xa;recharge_bullet&#xa;reset&#xa;shoot&#xa;start_dash&#xa;start_shoot_animation&#xa;start_stomp_cooldown&#xa;update&#xa;update_hunger&#xa;update_shoot_animation&#xa;update_stomp_cooldown" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="816" y="24" h="772" w="164" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="ammo,bullet_delay,bullet_group,bullet_ready,bullet_time,dash_direction,dash_distance,dash_remaining,dash_speed,double_click_window,gravity,ground_y,hunger,hunger_decay_rate,image,is_dashing,is_jumping,is_shooting,is_stomping,jump_strength,last_hunger_time,last_left_press,last_right_press,left_click_count,left_key_pressed,lives,max_ammo,max_hunger,rect,right_click_count,right_key_pressed,shoot_animation_duration,shoot_animation_time,shoot_sound,speed,stomp_cooldown,stomp_cooldown_duration,stomp_cooldown_time,stomp_damage,velocity_y"/>
+            <att name="meths" value="__init__,add_ammo,apply_gravity,change_image,check_double_click,constrain_movement,eat_food,get_user_input,jump_down,jump_up,perform_dash,recharge_bullet,reset,shoot,start_dash,start_shoot_animation,start_stomp_cooldown,update,update_hunger,update_shoot_animation,update_stomp_cooldown"/>
+
+            <att name="width" value="154"/>
+            <att name="height" value="664"/>
+        </node>
+        <node id="InitMenu" label="InitMenu&#xa;⎯⎯⎯&#xa;image&#xa;run&#xa;user&#xa;⎯⎯⎯&#xa;__init__&#xa;draw&#xa;draw_text" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="10" y="201" h="150" w="87" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="image,run,user"/>
+            <att name="meths" value="__init__,draw,draw_text"/>
+
+            <att name="width" value="77"/>
+            <att name="height" value="114"/>
+        </node>
+        <node id="GameView" label="GameView&#xa;⎯⎯⎯&#xa;draw&#xa;draw_text" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="3" y="366" h="88" w="87" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value="draw,draw_text"/>
+
+            <att name="width" value="77"/>
+            <att name="height" value="64"/>
+        </node>
+        <node id="GameModel" label="GameModel&#xa;⎯⎯⎯&#xa;animation_group&#xa;background&#xa;boss_group&#xa;boss_time&#xa;config&#xa;finish_time&#xa;food_generator_delay&#xa;food_generator_time&#xa;food_group&#xa;game_time&#xa;is_pass&#xa;level&#xa;money&#xa;player_group&#xa;progress&#xa;run&#xa;spoon_group&#xa;start_time&#xa;user&#xa;wait&#xa;⎯⎯⎯&#xa;__init__&#xa;boss_appear&#xa;check_for_collisions&#xa;check_for_state&#xa;food_generator&#xa;game_over&#xa;game_pass&#xa;play_BGM&#xa;reset&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="199" y="496" h="390" w="140" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="animation_group,background,boss_group,boss_time,config,finish_time,food_generator_delay,food_generator_time,food_group,game_time,is_pass,level,money,player_group,progress,run,spoon_group,start_time,user,wait"/>
+            <att name="meths" value="__init__,boss_appear,check_for_collisions,check_for_state,food_generator,game_over,game_pass,play_BGM,reset,update"/>
+
+            <att name="width" value="130"/>
+            <att name="height" value="354"/>
+        </node>
+        <node id="Explosion" label="Explosion&#xa;⎯⎯⎯&#xa;__init__" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="341" y="203" h="78" w="96" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value="__init__"/>
+
+            <att name="width" value="86"/>
+            <att name="height" value="54"/>
+        </node>
+        <node id="Background" label="Background&#xa;⎯⎯⎯&#xa;image&#xa;speed&#xa;x1&#xa;x2&#xa;⎯⎯⎯&#xa;__init__&#xa;draw&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="143" y="304" h="160" w="104" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="image,speed,x1,x2"/>
+            <att name="meths" value="__init__,draw,update"/>
+
+            <att name="width" value="94"/>
+            <att name="height" value="124"/>
+        </node>
+        <node id="QuitMenu" label="QuitMenu&#xa;⎯⎯⎯&#xa;active&#xa;⎯⎯⎯&#xa;__init__&#xa;draw&#xa;draw_text&#xa;hide&#xa;show" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="378" y="326" h="150" w="87" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="active"/>
+            <att name="meths" value="__init__,draw,draw_text,hide,show"/>
+
+            <att name="width" value="77"/>
+            <att name="height" value="114"/>
+        </node>
+        <node id="GameController" label="GameController&#xa;⎯⎯⎯&#xa;model&#xa;quit_menu&#xa;user&#xa;view&#xa;⎯⎯⎯&#xa;__init__&#xa;create_new_game&#xa;draw&#xa;handle_events&#xa;start_game&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="464" y="368" h="190" w="138" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="model,quit_menu,user,view"/>
+            <att name="meths" value="__init__,create_new_game,draw,handle_events,start_game,update"/>
+
+            <att name="width" value="128"/>
+            <att name="height" value="154"/>
+        </node>
+        <node id="Food" label="Food&#xa;⎯⎯⎯&#xa;animation&#xa;animation_delay&#xa;animation_time&#xa;change_direction_delay&#xa;change_direction_time&#xa;food_type&#xa;frame&#xa;image&#xa;max_y&#xa;min_y&#xa;rect&#xa;speedx&#xa;speedy&#xa;value&#xa;x&#xa;y&#xa;⎯⎯⎯&#xa;__init__&#xa;change_direction&#xa;constrain_movement&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="605" y="64" h="290" w="152" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="animation,animation_delay,animation_time,change_direction_delay,change_direction_time,food_type,frame,image,max_y,min_y,rect,speedx,speedy,value,x,y"/>
+            <att name="meths" value="__init__,change_direction,constrain_movement,update"/>
+
+            <att name="width" value="142"/>
+            <att name="height" value="254"/>
+        </node>
+        <node id="FoodFactory" label="FoodFactory&#xa;⎯⎯⎯&#xa;food_images&#xa;⎯⎯⎯&#xa;create&#xa;load_images" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="520" y="676" h="120" w="112" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="food_images"/>
+            <att name="meths" value="create,load_images"/>
+
+            <att name="width" value="102"/>
+            <att name="height" value="84"/>
+        </node>
+        <node id="Bullet" label="Bullet&#xa;⎯⎯⎯&#xa;animation&#xa;animation_delay&#xa;animation_time&#xa;damage&#xa;frame&#xa;image&#xa;is_animation&#xa;rect&#xa;speedx&#xa;speedy&#xa;x&#xa;y&#xa;⎯⎯⎯&#xa;__init__&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="1040" y="57" h="230" w="110" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="animation,animation_delay,animation_time,damage,frame,image,is_animation,rect,speedx,speedy,x,y"/>
+            <att name="meths" value="__init__,update"/>
+
+            <att name="width" value="100"/>
+            <att name="height" value="194"/>
+        </node>
+        <node id="Boss" label="Boss&#xa;⎯⎯⎯&#xa;blink_delay&#xa;blink_time&#xa;ground_y&#xa;hp&#xa;hp_max&#xa;image&#xa;invincible&#xa;invincible_duration&#xa;invincible_start_time&#xa;is_respawning&#xa;rect&#xa;respawn_delay&#xa;respawn_timer&#xa;speedx&#xa;value&#xa;visible&#xa;x&#xa;y&#xa;⎯⎯⎯&#xa;__init__&#xa;constrain_movement&#xa;draw_hp&#xa;should_respawn&#xa;start_invincible&#xa;take_bullet_damage&#xa;take_stomp_damage&#xa;update&#xa;update_invincible" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="524" y="809" h="360" w="146" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="blink_delay,blink_time,ground_y,hp,hp_max,image,invincible,invincible_duration,invincible_start_time,is_respawning,rect,respawn_delay,respawn_timer,speedx,value,visible,x,y"/>
+            <att name="meths" value="__init__,constrain_movement,draw_hp,should_respawn,start_invincible,take_bullet_damage,take_stomp_damage,update,update_invincible"/>
+
+            <att name="width" value="136"/>
+            <att name="height" value="324"/>
+        </node>
+        <node id="Animation" label="Animation&#xa;⎯⎯⎯&#xa;animation&#xa;animation_delay&#xa;animation_time&#xa;frame&#xa;image&#xa;rect&#xa;size&#xa;sound&#xa;x&#xa;y&#xa;⎯⎯⎯&#xa;__init__&#xa;update" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="770" y="809" h="210" w="110" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="animation,animation_delay,animation_time,frame,image,rect,size,sound,x,y"/>
+            <att name="meths" value="__init__,update"/>
+
+            <att name="width" value="100"/>
+            <att name="height" value="174"/>
+        </node>
+        <node id="Heal" label="Heal&#xa;⎯⎯⎯&#xa;__init__" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="464" y="250" h="78" w="68" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value=""/>
+            <att name="meths" value="__init__"/>
+
+            <att name="width" value="58"/>
+            <att name="height" value="54"/>
+        </node>
+        <node id="User" label="User&#xa;⎯⎯⎯&#xa;best_time&#xa;level&#xa;max_level&#xa;money&#xa;⎯⎯⎯&#xa;__init__&#xa;get_best_time_text&#xa;level_up&#xa;load_data&#xa;save_data" weight="0">
+            <graphics type="ROUND_RECTANGLE" x="1040" y="335" h="180" w="128" fill="#91CFEB" >
+                <att name="NODE_LABEL_POSITION" value="C,C,l,0.00,0.00" type="string" cy:type="String"/>
+                <att name="NODE_LABEL_FONT_SIZE" value="10" type="string" cy:type="String"/>
+            </graphics>
+            <att name="attrs" value="best_time,level,max_level,money"/>
+            <att name="meths" value="__init__,get_best_time_text,level_up,load_data,save_data"/>
+
+            <att name="width" value="118"/>
+            <att name="height" value="144"/>
+        </node>
+
+        <edge source="SpoonItem" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from SpoonItem to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="random.randint" target="SpoonItem" type="last" weight="0" label="Edge from random.randint to SpoonItem">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="random.choice" target="SpoonItem" type="last" weight="0" label="Edge from random.choice to SpoonItem">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="SpoonBullet" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from SpoonBullet to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Player" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from Player to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Explosion" target="GameModel" type="last" weight="0" label="Edge from Explosion to GameModel">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="random.randint" target="GameModel" type="last" weight="0" label="Edge from random.randint to GameModel">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Background" target="GameModel" type="last" weight="0" label="Edge from Background to GameModel">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Progress" target="GameModel" type="last" weight="0" label="Edge from Progress to GameModel">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="QuitMenu" target="GameController" type="last" weight="0" label="Edge from QuitMenu to GameController">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="GameModel" target="GameController" type="last" weight="0" label="Edge from GameModel to GameController">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Food" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from Food to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="random.randint" target="Food" type="last" weight="0" label="Edge from random.randint to Food">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Bullet" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from Bullet to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Boss" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from Boss to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="random.randint" target="Boss" type="last" weight="0" label="Edge from random.randint to Boss">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="ARROW" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DIAMOND" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Explosion" target="Animation" type="last" weight="0" label="Edge from Explosion to Animation">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Heal" target="Animation" type="last" weight="0" label="Edge from Heal to Animation">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+        <edge source="Animation" target="pygame.sprite.Sprite" type="last" weight="0" label="Edge from Animation to pygame.sprite.Sprite">
+            <graphics width="2.0" fill="#848484">
+                <att name="EDGE_LINE_TYPE" value="SOLID" type="string" cy:type="String"/>
+                <att name="EDGE_SOURCE_ARROW_SHAPE" value="NONE" type="string" cy:type="String"/>
+                <att name="EDGE_TARGET_ARROW_SHAPE" value="OPEN_DELTA" type="string" cy:type="String"/>
+            </graphics>
+        </edge>
+    </graph>        

@@ -35,19 +35,13 @@ class InitMenu:
         # 嘗試載入主畫面圖片
         try:
             # 你可以把新的主畫面圖片放在這個路徑
-            self.image = pygame.image.load("Image/main_menu.png")
+            self.image = pygame.image.load("Image/background/Anping.png")
             self.image = pygame.transform.scale(self.image, (SCREEN_WIDTH, SCREEN_HEIGHT))
             print("Main menu background loaded successfully!")
         except pygame.error:
-            try:
-                # 如果找不到 main_menu.png，嘗試使用原本的 init_menu.png
-                self.image = pygame.image.load("Image/init_menu.png")
-                self.image = pygame.transform.scale(self.image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-                print("Using original init_menu.png")
-            except pygame.error:
-                # 如果都找不到，使用程式生成的背景
-                self.image = create_temp_menu_background()
-                print("Using temporary generated background")
+            # 如果都找不到，使用程式生成的背景
+            self.image = create_temp_menu_background()
+            print("Using temporary generated background")
 
     def draw(self, surface):
         # 畫出背景圖片
@@ -59,33 +53,38 @@ class InitMenu:
         overlay.fill((0, 0, 0))  # 黑色覆蓋
         surface.blit(overlay, (0, 0))
         
-        # 遊戲標題和資訊
-        self.draw_text(surface, f"Money: {self.user.money}", 24, WHITE, False, 120, 20)
+        # 遊戲標題和資訊（移除金錢顯示）
+        # self.draw_text(surface, f"Money:{self.user.money}", 24, WHITE, False, 120, 20)
         
         # 主標題 - 台南美食大冒險
         self.draw_text(surface, "台南美食大冒險", 36, WHITE, False, SCREEN_WIDTH//2, 250)
         self.draw_text(surface, "Tainan Food Adventure", 28, WHITE, False, SCREEN_WIDTH//2, 290)
         
+        # 最佳紀錄顯示
+        best_time_text = self.user.get_best_time_text()
+        self.draw_text(surface, f"Best Time: {best_time_text}", 24, YELLOW, False, SCREEN_WIDTH//2, 320)
+        
         # 遊戲說明
-        self.draw_text(surface, "騎摩托車收集台南美食，用湯匙射擊黑道汽車!", 20, WHITE, False, SCREEN_WIDTH//2, 340)
-        self.draw_text(surface, "雙擊方向鍵衝刺，小心別被撞到!", 18, WHITE, False, SCREEN_WIDTH//2, 365)
+        self.draw_text(surface, "騎摩托車收集台南美食，用湯匙射擊黑道汽車!", 20, WHITE, False, SCREEN_WIDTH//2, 360)
+        self.draw_text(surface, "雙擊方向鍵衝刺，小心別被撞到!", 18, WHITE, False, SCREEN_WIDTH//2, 385)
+        self.draw_text(surface, "遊戲中按Q鍵可隨時退出", 16, WHITE, False, SCREEN_WIDTH//2, 410)
         
         # 開始遊戲提示
-        self.draw_text(surface, "Press P to start the game!", 24, YELLOW, False, SCREEN_WIDTH//2, 420)
+        self.draw_text(surface, "Press P to start the game!", 24, YELLOW, False, SCREEN_WIDTH//2, 450)
         
-        # 關卡資訊
-        self.draw_text(surface, f"- Level {self.user.level} -", 20, WHITE, False, SCREEN_WIDTH//2, 500)
+        # 移除關卡資訊顯示
+        # self.draw_text(surface, f"- Level {self.user.level} -", 20, WHITE, False, SCREEN_WIDTH//2, 500)
         
-        # 嘗試顯示關卡預覽圖
-        try:
-            level_image = pygame.image.load(f"Image/level{self.user.level}.jpg")
-            level_image = pygame.transform.scale(level_image, (200, 120))
-            surface.blit(level_image, (SCREEN_WIDTH//2 - 100, 530))
-        except pygame.error:
-            # 如果沒有關卡圖片，顯示簡單的關卡資訊框
-            pygame.draw.rect(surface, (50, 50, 50), (SCREEN_WIDTH//2 - 100, 530, 200, 120))
-            pygame.draw.rect(surface, WHITE, (SCREEN_WIDTH//2 - 100, 530, 200, 120), 2)
-            self.draw_text(surface, f"Level {self.user.level}", 24, WHITE, False, SCREEN_WIDTH//2, 580)
+        # 移除關卡預覽圖片顯示
+        # try:
+        #     level_image = pygame.image.load(f"Image/level{self.user.level}.jpg")
+        #     level_image = pygame.transform.scale(level_image, (200, 120))
+        #     surface.blit(level_image, (SCREEN_WIDTH//2 - 100, 530))
+        # except pygame.error:
+        #     # 如果沒有關卡圖片，顯示簡單的關卡資訊框
+        #     pygame.draw.rect(surface, (50, 50, 50), (SCREEN_WIDTH//2 - 100, 530, 200, 120))
+        #     pygame.draw.rect(surface, WHITE, (SCREEN_WIDTH//2 - 100, 530, 200, 120), 2)
+        #     self.draw_text(surface, f"Level {self.user.level}", 24, WHITE, False, SCREEN_WIDTH//2, 580)
 
     def draw_text(self, surface, text, size, color, bold, x, y):
         font = pygame.font.Font("Font/BoutiqueBitmap9x9_Bold_1.9.ttf", size=size)
