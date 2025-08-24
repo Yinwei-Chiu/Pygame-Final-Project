@@ -6,6 +6,7 @@ from background import Background
 from player import Player
 from food_factory import FoodFactory
 from animation import Explosion
+from animation import FoodExplosion
 from progress import Progress
 from spoon import SpoonItem
 import boss
@@ -71,7 +72,7 @@ class GameModel:
         now = pygame.time.get_ticks()
         if now - self.food_generator_time > self.food_generator_delay:
             # 75% 機率生成美食，25% 機率生成湯匙道具
-            if random.random() < 0.75:
+            if random.random() < 0.9:
                 # 生成美食 - 從右側進入
                 food_type = random.choice(self.config["enemies"])
                 food_y = random.randint(SCREEN_HEIGHT - 300, SCREEN_HEIGHT - 150)
@@ -109,14 +110,14 @@ class GameModel:
                     food.kill()
                     bullet.kill()
                     self.animation_group.add(
-                        Explosion(food.rect.centerx + random.randint(-60, 60),
+                        FoodExplosion(food.rect.centerx + random.randint(-60, 60),
                                 food.rect.centery + random.randint(-60, 60), 150)
                     )
         # 玩家直接碰觸美食 - 吃食物恢復飢餓度
         foods_collected = pygame.sprite.spritecollide(player, self.food_group, True)
         for food in foods_collected:
             player.eat_food(food.hunger)
-            self.animation_group.add(Explosion(food.rect.centerx, food.rect.centery, 40))
+            self.animation_group.add(FoodExplosion(food.rect.centerx, food.rect.centery, 150))
 
         # Boss碰撞檢測 - 在地面=死亡，跳躍=踩車
         if self.boss_group.sprite:

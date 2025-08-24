@@ -46,7 +46,7 @@ class Player(pygame.sprite.Sprite):
         self.speed = 10
         
         # 彈藥系統（取代原本的無限子彈）
-        self.ammo = 0          # 開始時沒有湯匙
+        self.ammo = 5          # 開始時沒有湯匙
         self.max_ammo = 20     # 最大湯匙數
         
         # 飢餓度系統
