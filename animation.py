@@ -11,6 +11,10 @@ for i in range(4):
     heal_image = pygame.image.load(f"Image/animation/heal/heal{i}.png")
     heal_animation.append(heal_image)
 
+FoodExplosion_animation = []
+for i in range(9):
+    food_explosion_image = pygame.image.load(f"Image/animation/sugar_explosion/sugar_exp{i}.png")
+    FoodExplosion_animation.append(food_explosion_image)
 
 class Animation(pygame.sprite.Sprite):
     def __init__(self, x, y, size, animations, delay, sound_path):
@@ -48,5 +52,8 @@ class Heal(Animation):
     def __init__(self, x, y, size):
         super().__init__(x, y, size, heal_animation, 100, "Sound/heal.mp3")
 
+class FoodExplosion(Animation):
+    def __init__(self, x, y, size):
+        super().__init__(x, y, size, explosion_animation, 30, "Sound/explosion.mp3")
 
                 
