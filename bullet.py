@@ -2,11 +2,13 @@ import pygame
 from Config import *
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, x, y, speedx, speedy, damage=10):
+    def __init__(self, x, y, speedx = 20, speedy =0, damage=10):
         super().__init__()
         self.x = x
         self.y = y
-        # self.rect = self.image.get_rect(center=(self.x, self.y))
+        self.image = pygame.image.load("image/bullet/chopsticks.png")
+        self.image = pygame.transform.scale(self.image, (60,60))
+        self.rect = self.image.get_rect(center=(self.x, self.y))
         self.speedx = speedx
         self.speedy = speedy
         self.damage = damage
@@ -15,8 +17,6 @@ class Bullet(pygame.sprite.Sprite):
         self.animation_delay = 50
         self.is_animation = False
         self.animation = []
-        self.image = None
-        self.rect = None
 
 
     def update(self):

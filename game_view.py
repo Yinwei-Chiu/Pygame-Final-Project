@@ -7,6 +7,7 @@ class GameView:
         model.player_group.draw(surface)
         model.player_group.sprite.bullet_group.draw(surface)
         model.food_group.draw(surface)
+        model.power_group.draw(surface)
         model.animation_group.draw(surface)
         
         # Boss需要特殊繪製以配合閃爍效果

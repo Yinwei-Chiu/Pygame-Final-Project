@@ -7,8 +7,10 @@ from player import Player
 from food_factory import FoodFactory
 from animation import Explosion
 from animation import FoodExplosion
+from animation import Heal
 from progress import Progress
 from spoon import SpoonItem
+from power import Power
 import boss
 
 
@@ -25,6 +27,7 @@ class GameModel:
         self.animation_group = pygame.sprite.Group()
         self.boss_group = pygame.sprite.GroupSingle()
         self.spoon_group = pygame.sprite.Group()  # 湯匙道具群組
+        self.power_group = pygame.sprite.Group() # 道具群組
 
         self.food_generator_time = 0
         self.food_generator_delay = random.randint(*self.config["enemy_delay"])
@@ -39,12 +42,15 @@ class GameModel:
         self.boss_time = self.config["boss_time"]
         self.progress = Progress(SCREEN_WIDTH - 50, 60, self.game_time, self.boss_time)
 
+        self.power_probability = 0.5
+
     def update(self):
         self.background.update()
         self.player_group.update()
         self.food_group.update()
         self.animation_group.update()
         self.boss_group.update()
+        self.power_group.update()
         
         # 檢查Boss是否需要重新刷新
         if self.boss_group.sprite:
@@ -72,7 +78,7 @@ class GameModel:
         now = pygame.time.get_ticks()
         if now - self.food_generator_time > self.food_generator_delay:
             # 75% 機率生成美食，25% 機率生成湯匙道具
-            if random.random() < 0.9:
+            if random.random() < 0.5:
                 # 生成美食 - 從右側進入
                 food_type = random.choice(self.config["enemies"])
                 food_y = random.randint(SCREEN_HEIGHT - 300, SCREEN_HEIGHT - 150)
@@ -107,17 +113,19 @@ class GameModel:
                 food_hit = pygame.sprite.spritecollide(bullet, self.food_group, False)
                 for food in food_hit:
                     player.eat_food(food.hunger)
-                    food.kill()
                     bullet.kill()
                     self.animation_group.add(
                         FoodExplosion(food.rect.centerx + random.randint(-60, 60),
-                                food.rect.centery + random.randint(-60, 60), 150)
-                    )
+                                food.rect.centery + random.randint(-60, 60), 150))
+                    if self.power_probability >= random.random():
+                        self.power_group.add(Power(food.rect.centerx, food.rect.centery))
+
+                    food.kill()
         # 玩家直接碰觸美食 - 吃食物恢復飢餓度
-        foods_collected = pygame.sprite.spritecollide(player, self.food_group, True)
-        for food in foods_collected:
-            player.eat_food(food.hunger)
-            self.animation_group.add(FoodExplosion(food.rect.centerx, food.rect.centery, 150))
+        # foods_collected = pygame.sprite.spritecollide(player, self.food_group, True)
+        # for food in foods_collected:
+        #     player.eat_food(food.hunger)
+        #     self.animation_group.add(FoodExplosion(food.rect.centerx, food.rect.centery, 150))
 
         # Boss碰撞檢測 - 在地面=死亡，跳躍=踩車
         if self.boss_group.sprite:
@@ -166,6 +174,15 @@ class GameModel:
             player.add_ammo(spoon.value)
             self.animation_group.add(Explosion(spoon.rect.centerx, spoon.rect.centery, 30))
 
+        #收集其他道具
+        power_collected = pygame.sprite.spritecollide(player, self.power_group, False)
+        for power in power_collected:
+            player.apply_power(power)
+            self.animation_group.add(FoodExplosion(power.rect.centerx, power.rect.centery, 150))
+            if power.type == "heal":
+                self.animation_group.add(Heal(self.rect.centerx, self.rect.centery, 100))
+            power.kill()
+
     def check_for_state(self):
         player = self.player_group.sprite
         if player.lives <= 0:
@@ -175,6 +192,7 @@ class GameModel:
         if boss and boss.hp <= 0:
             boss.kill()
             self.game_pass()
+            #self.user.level_up()
 
     def boss_appear(self):
         if self.game_time >= self.boss_time and not self.boss_group.sprite:
@@ -191,14 +209,12 @@ class GameModel:
         self.boss_group.empty()
         self.animation_group.empty()
         self.spoon_group.empty()
-        self.money = 0
         self.start_time = pygame.time.get_ticks()
 
     def game_over(self):
         self.run = False
         self.wait = True
         self.finish_time = self.game_time
-        self.user.money += self.money
 
     def game_pass(self):
         self.run = False
@@ -208,7 +224,6 @@ class GameModel:
         # 更新最佳紀錄
         if self.user.best_time == 0 or self.game_time < self.user.best_time:
             self.user.best_time = self.game_time
-        self.user.money += self.money
 
     def play_BGM(self):
         try:

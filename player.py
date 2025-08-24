@@ -1,4 +1,5 @@
 import pygame
+from bullet import Bullet
 from Config import *
 
 # 載入角色圖片
@@ -8,33 +9,6 @@ player_images = {
     "shooting": pygame.transform.scale(
         pygame.image.load("image/benz_cat/shooting.png"), (90, 60))
 }
-
-def create_spoon_bullet():
-    """創建湯匙子彈圖片"""
-    try:
-        spoon_bullet = pygame.image.load("Image/bullet/chopsticks.png")
-        spoon_bullet = pygame.transform.scale(spoon_bullet, (70, 50))  # 從35x25再放大一倍到70x50
-        return spoon_bullet
-    except pygame.error:
-        # 如果找不到圖片，創建簡單的湯匙形狀
-        spoon_bullet = pygame.Surface((70, 50), pygame.SRCALPHA)  # 從35x25再放大一倍到70x50
-        pygame.draw.ellipse(spoon_bullet, (192, 192, 192), (40, 6, 28, 38))  # 匙頭，按比例放大
-        pygame.draw.rect(spoon_bullet, (139, 69, 19), (0, 20, 50, 10))  # 匙柄，按比例放大
-        return spoon_bullet
-
-class SpoonBullet(pygame.sprite.Sprite):
-    """湯匙子彈類別"""
-    def __init__(self, x, y):
-        super().__init__()
-        self.image = create_spoon_bullet()
-        self.rect = self.image.get_rect(center=(x, y))
-        self.speedx = 14
-        self.damage = 6
-
-    def update(self):
-        self.rect.x += self.speedx
-        if self.rect.x > SCREEN_WIDTH + 15:
-            self.kill()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -46,13 +20,13 @@ class Player(pygame.sprite.Sprite):
         self.speed = 10
         
         # 彈藥系統（取代原本的無限子彈）
-        self.ammo = 5          # 開始時沒有湯匙
-        self.max_ammo = 20     # 最大湯匙數
+        self.ammo = 5          # 開始時有五雙筷子
+        self.max_ammo = 10     # 最大湯匙數
         
         # 飢餓度系統
         self.hunger = 100      # 飢餓度，100為飽足，0為餓死
         self.max_hunger = 100
-        self.hunger_decay_rate = 7  # 每秒減少的飢餓度
+        self.hunger_decay_rate = 3  # 每秒減少的飢餓度
         self.last_hunger_time = pygame.time.get_ticks()
         
         # 踩車重擊系統
@@ -216,8 +190,8 @@ class Player(pygame.sprite.Sprite):
             self.is_stomping = False  # 落地時重置踩車狀態
 
     def shoot(self):
-        """射擊湯匙"""
-        bullet = SpoonBullet(self.rect.right, self.rect.centery)
+        """射擊筷子"""
+        bullet = Bullet(self.rect.right, self.rect.centery)
         self.bullet_group.add(bullet)
         if self.shoot_sound:
             self.shoot_sound.play()
@@ -257,7 +231,7 @@ class Player(pygame.sprite.Sprite):
 
     def eat_food(self, food_value):
         """吃食物恢復飢餓度"""
-        hunger_restore = food_value * 10  # 每個食物價值恢復10點飢餓度
+        hunger_restore = food_value   # 每個食物價值恢復10點飢餓度
         self.hunger = min(self.hunger + hunger_restore, self.max_hunger)
 
     def update_hunger(self):
@@ -307,6 +281,7 @@ class Player(pygame.sprite.Sprite):
         self.left_key_pressed = False  # 重置按鍵狀態
         self.right_key_pressed = False
         self.ammo = 0  # 開始時沒有湯匙
+        self.max_ammo = 10
         self.hunger = 100  # 重置飢餓度
         self.last_hunger_time = pygame.time.get_ticks()
         self.lives = 1
@@ -315,3 +290,20 @@ class Player(pygame.sprite.Sprite):
 
     def change_image(self, new_image):
         self.image = new_image
+
+    def apply_power(self, power):
+        if power.type == "cube_sugar":
+            if self.hunger +10 >= 100:
+                self.hunger = 100
+            else:
+                self.hunger += 10
+            return
+        if power.type == "ice_bar":
+            if self.ammo +5 >= self.max_ammo:
+                self.ammo = self.max_ammo
+            else:
+                self.ammo += 5
+            return
+        if power.type == "turte_cake": # 龜苓膏 - 增加最大彈藥量
+            self.max_ammo +=5
+            return

@@ -3,7 +3,7 @@ import os
 
 class User():
     def __init__(self):
-        self.money = 0
+        self.bullet = 0
         self.level = 1
         self.max_level = 3
         self.best_time = 0  # 最佳時間（毫秒）
@@ -21,7 +21,7 @@ class User():
         # 被儲存的位置在資料夾的User_data
         print("Saving user data...")
         data = {
-            "money": self.money,
+            "bullet": 0,
             "level": self.level,
             "best_time": self.best_time
         }
@@ -39,7 +39,7 @@ class User():
         try:
             with open("User_data/user_data.json", "r") as f:
                 data = json.load(f)
-                self.money = data.get("money", 0)
+                self.bullet = data.get("money", 0)
                 self.level = data.get("level", 1)
                 self.best_time = data.get("best_time", 0)
         except (FileNotFoundError, json.JSONDecodeError):
