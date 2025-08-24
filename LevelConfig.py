@@ -7,7 +7,7 @@ LEVELS = {
         "enemy_delay": (1500, 2500)  # 食物刷新間隔
     },
     2: {
-        "background": "Image/background/Lindepartment.png", 
+        "background": "Image/background/Lindepartment_1.png", 
         "enemies": ["noodle", "oyster_omlet"],
         "boss": "Boss",
         "boss_time": 8000,  # 8秒後Boss出現

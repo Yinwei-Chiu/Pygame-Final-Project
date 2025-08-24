@@ -173,15 +173,14 @@ class GameModel:
         spoons_collected = pygame.sprite.spritecollide(player, self.spoon_group, True)
         for spoon in spoons_collected:
             player.add_ammo(spoon.value)
-            self.animation_group.add(Explosion(spoon.rect.centerx, spoon.rect.centery, 30))
+            self.animation_group.add(FoodExplosion(spoon.rect.centerx, spoon.rect.centery, 30))
 
         #收集其他道具
         power_collected = pygame.sprite.spritecollide(player, self.power_group, False)
         for power in power_collected:
             player.apply_power(power)
-            self.animation_group.add(FoodExplosion(power.rect.centerx, power.rect.centery, 150))
-            if power.type == "heal":
-                self.animation_group.add(Heal(self.rect.centerx, self.rect.centery, 100))
+            self.animation_group.add(FoodExplosion(power.rect.centerx, power.rect.centery, 20))
+            self.animation_group.add(Heal(power.rect.centerx, power.rect.centery, 100))
             power.kill()
 
     def check_for_state(self):
