@@ -4,6 +4,7 @@ from Config import *
 #食物種類
 food_dict = {
     "coffin_bread": {"hunger":3, "path":"image/tainan_food/coffin_bread.png"},
+    "Tea": {"hunger":3, "path":"image/tainan_food/Tea.png"},
     "mango_ice": {"hunger":2, "path":"image/tainan_food/mango_ice.png"},
     "noodle": {"hunger":2, "path":"image/tainan_food/noodle.png"},
     "oyster_omlet": {"hunger":5, "path":"image/tainan_food/oyster_omlet.png"},

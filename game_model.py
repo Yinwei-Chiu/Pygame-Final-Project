@@ -34,7 +34,9 @@ class GameModel:
 
         self.run = False
         self.wait = False
+        self.next_level = False
         self.is_pass = False
+        self.lose = False
 
         self.money = 0
         self.game_time = 0
@@ -61,11 +63,10 @@ class GameModel:
                 self.boss_group.sprite.kill()
                 # 在畫面右側外創建新Boss，血量不變
                 boss_y = SCREEN_HEIGHT - 150  # 與玩家摩托車同高度
-                new_boss = boss.Boss(SCREEN_WIDTH + 150, boss_y, current_hp)
+                new_boss = boss.Boss(self.level,SCREEN_WIDTH + 150, boss_y, current_hp)
                 self.boss_group.add(new_boss)
         
         self.spoon_group.update()
-
         self.game_time = pygame.time.get_ticks() - self.start_time if self.start_time > 0 else 0
         self.progress.update(self.game_time)
 
@@ -192,12 +193,14 @@ class GameModel:
         if boss and boss.hp <= 0:
             boss.kill()
             self.game_pass()
-            #self.user.level_up()
+            self.user.level_up()
+            if self.level == 3:
+                self.game_win()
 
     def boss_appear(self):
         if self.game_time >= self.boss_time and not self.boss_group.sprite:
             boss_y = SCREEN_HEIGHT - 150  # 與玩家摩托車同高度
-            new_boss = boss.Boss(SCREEN_WIDTH + 100, boss_y)
+            new_boss = boss.Boss(self.level,SCREEN_WIDTH + 100, boss_y)
             self.boss_group.add(new_boss)
 
     def reset(self):
@@ -214,9 +217,16 @@ class GameModel:
     def game_over(self):
         self.run = False
         self.wait = True
+        self.lose = True
         self.finish_time = self.game_time
 
     def game_pass(self):
+        self.run = False
+        self.wait = True
+        self.next_level = True
+        self.finish_time = self.game_time
+
+    def game_win(self):
         self.run = False
         self.wait = True
         self.is_pass = True

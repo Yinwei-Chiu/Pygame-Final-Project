@@ -26,14 +26,19 @@ class GameView:
         if not model.run:
             if model.is_pass:
                 self.draw_text(surface, "You Win!!", 48, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2-80)
-                self.draw_text(surface, "Press R to start the next level", 28, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
-            else:
+                self.draw_text(surface, "You are a fatty cat!", 28, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+            elif model.next_level:
+                self.draw_text(surface, "Next level!!", 48, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2-80)
+                self.draw_text(surface, "Press R to start the new level", 28, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+            elif model.lose:
                 self.draw_text(surface, "Game Over!!", 48, RED, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2-80)
                 self.draw_text(surface, "Press R to restart the game", 28, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+            else:
+                self.draw_text(surface, "Press R to start the game", 28, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
             self.draw_text(surface, "Press Q to return the initial menu", 26, WHITE, False, SCREEN_WIDTH/2, SCREEN_HEIGHT/2+50)
 
         # 顯示湯匙數量
-        self.draw_text(surface, "Spoons", 24, WHITE, False, 50, SCREEN_HEIGHT-65)
+        self.draw_text(surface, "Ammo", 24, WHITE, False, 50, SCREEN_HEIGHT-65)
         spoon_text = f"{model.player_group.sprite.ammo}/{model.player_group.sprite.max_ammo}"
         self.draw_text(surface, spoon_text, 24, WHITE, False, 50, SCREEN_HEIGHT-40)
         

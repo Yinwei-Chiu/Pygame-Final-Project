@@ -2,52 +2,35 @@ import pygame
 import random
 from Config import *
 
-def create_temp_car_image(width, height, color=(0, 0, 0)):
-    """創建臨時的汽車圖片"""
-    car_surface = pygame.Surface((width, height), pygame.SRCALPHA)
-    
-    # 車身 (主體矩形)
-    pygame.draw.rect(car_surface, color, (10, height//3, width-20, height//2))
-    
-    # 車頂
-    pygame.draw.rect(car_surface, color, (width//4, height//6, width//2, height//3))
-    
-    # 車輪
-    wheel_radius = height//8
-    wheel_color = (64, 64, 64)  # 深灰色
-    pygame.draw.circle(car_surface, wheel_color, (width//4, height-10), wheel_radius)
-    pygame.draw.circle(car_surface, wheel_color, (3*width//4, height-10), wheel_radius)
-    
-    # 車窗 (藍色)
-    window_color = (100, 150, 255)
-    pygame.draw.rect(car_surface, window_color, (width//4 + 5, height//6 + 5, width//2 - 10, height//4))
-    
-    return car_surface
 
 # 載入Boss汽車圖片
-try:
-    boss_car_image = pygame.image.load("Image/boss_car.png")
-    boss_car_image = pygame.transform.scale(boss_car_image, (100, 60))
-except pygame.error:
-    print("Warning: boss_car.png not found, using temporary car image")
-    boss_car_image = create_temp_car_image(100, 60, (0, 0, 0))
+Boss_dict= {
+    1:{ "pic_path" :"image/boss_chair.png", "hp":50,"speed":-5,"size":(72, 72)},
+    2:{ "pic_path" :"image/boss_scooter.png", "hp":60,"speed":-6,"size":(72, 72)},
+    3:{ "pic_path" :"image/boss_car.png", "hp":100,"speed":-10,"size":(100,60)}
+}
+
 
 class Boss(pygame.sprite.Sprite):
-    def __init__(self, x, y, existing_hp=None):
+    def __init__(self, level, x, y, existing_hp=None):
         super().__init__()
+        self.level = level
         self.x = x
         self.y = y
+
+        boss_image = pygame.image.load(Boss_dict[level]["pic_path"])
+        boss_car_image = pygame.transform.scale(boss_image, Boss_dict[level]["size"])
         self.image = boss_car_image
+        self.hp_max = Boss_dict[level]["hp"]
         self.rect = self.image.get_rect(center=(self.x, self.y))
-        self.speedx = -8  # 快速往左衝
+        self.speedx = Boss_dict[level]["speed"]  # 快速往左衝
         self.value = 10000  # 通關獎勵
         
         # 血量管理
         if existing_hp is not None:
             self.hp = existing_hp
         else:
-            self.hp = 60
-        self.hp_max = 60
+            self.hp = self.hp_max
         
         # 固定在地面上的Y座標 - 與玩家摩托車同高度
         self.ground_y = SCREEN_HEIGHT - 150  # 改為與玩家相同的高度
