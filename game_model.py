@@ -233,6 +233,8 @@ class GameModel:
         # 更新最佳紀錄
         if self.user.best_time == 0 or self.game_time < self.user.best_time:
             self.user.best_time = self.game_time
+        self.user.level = 1
+        self.user.save_data()
 
     def play_BGM(self):
         try:
