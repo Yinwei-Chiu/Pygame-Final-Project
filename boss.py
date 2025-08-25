@@ -5,9 +5,9 @@ from Config import *
 
 # 載入Boss汽車圖片
 Boss_dict= {
-    1:{ "pic_path" :"image/boss_chair.png", "hp":50,"speed":-5,"size":(72, 72)},
-    2:{ "pic_path" :"image/boss_scooter.png", "hp":60,"speed":-6,"size":(72, 72)},
-    3:{ "pic_path" :"image/boss_car.png", "hp":100,"speed":-10,"size":(100,60)}
+    1:{ "pic_path" :"image/boss_chair.png", "hp":50,"speed":-5,"size":(200, 200)},
+    2:{ "pic_path" :"image/boss_scooter.png", "hp":60,"speed":-6,"size":(200, 200)},
+    3:{ "pic_path" :"image/boss_car.png", "hp":100,"speed":-10,"size":(240,200)}
 }
 
 

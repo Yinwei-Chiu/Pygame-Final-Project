@@ -10,7 +10,7 @@ class SpoonItem(pygame.sprite.Sprite):
         # 嘗試載入湯匙圖片
         
         self.image = pygame.image.load("Image/bullet/chopsticks.png")
-        self.image = pygame.transform.scale(self.image, (40, 60))
+        self.image = pygame.transform.scale(self.image, (72, 72))
         
         self.rect = self.image.get_rect(center=(x, y))
         self.speedx = 0   # 不水平移動

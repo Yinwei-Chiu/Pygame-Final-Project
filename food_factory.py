@@ -13,7 +13,7 @@ class FoodFactory:
         for food_name, food_info in food_dict.items():
             try:
                 image = pygame.image.load(food_info["path"]).convert_alpha()
-                image = pygame.transform.scale(image, (50, 50))
+                image = pygame.transform.scale(image, (72, 72))
                 FoodFactory.food_images[food_name] = image
             except pygame.error as e:
                 print(f"Error loading image for {food_name}: {e}")

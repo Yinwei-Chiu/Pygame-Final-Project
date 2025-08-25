@@ -7,7 +7,7 @@ class Bullet(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.image = pygame.image.load("image/bullet/chopsticks.png")
-        self.image = pygame.transform.scale(self.image, (60,60))
+        self.image = pygame.transform.scale(self.image, (72,72))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.speedx = speedx
         self.speedy = speedy

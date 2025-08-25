@@ -193,7 +193,7 @@ class GameModel:
         if boss and boss.hp <= 0:
             boss.kill()
             self.game_pass()
-            self.user.level_up()
+            self.user.level_up(self.game_time)
             if self.level == 3:
                 self.game_win()
 
@@ -232,10 +232,6 @@ class GameModel:
         self.is_pass = True
         self.finish_time = self.game_time
         # 更新最佳紀錄
-        if self.user.best_time == 0 or self.game_time < self.user.best_time:
-            self.user.best_time = self.game_time
-        self.user.level = 1
-        self.user.save_data()
 
     def play_BGM(self):
         try:

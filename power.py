@@ -3,7 +3,7 @@ import random
 from Config import *
 
 # 在 Power 類別之前就載好
-POWER_SIZE = (40, 32)
+POWER_SIZE = (72, 72)
 POWER_IMAGES = {
     "cube_sugar": pygame.transform.scale(
         pygame.image.load("image/power/cube_sugar.png"),
@@ -13,7 +13,7 @@ POWER_IMAGES = {
         pygame.image.load("image/power/Ice_bar.png"),
         POWER_SIZE
     ), 
-    "turte_cake": pygame.transform.scale(
+    "turtle_cake": pygame.transform.scale(
         pygame.image.load("image/power/turtle_cake.png"),
         POWER_SIZE
     )

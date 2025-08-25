@@ -6,11 +6,11 @@ from LevelConfig import*
 # 載入角色圖片
 player_images = {
     "normal": pygame.transform.scale(
-        pygame.image.load("image/flower_cat/init.png"), (90, 60)), 
+        pygame.image.load("image/flower_cat/init.png"), (128, 128)), 
     "shooting": pygame.transform.scale(
-        pygame.image.load("image/flower_cat/shooting.png"), (90, 60)),
+        pygame.image.load("image/flower_cat/shooting.png"), (128, 128)),
     "eating": pygame.transform.scale(
-        pygame.image.load("image/flower_cat/eating.png"), (90, 60))
+        pygame.image.load("image/flower_cat/eating.png"), (128, 128))
 }
 
 class Player(pygame.sprite.Sprite):
@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         
         # 重力系統變數
         self.gravity = 0.8
-        self.jump_strength = -18
+        self.jump_strength = -20
         self.velocity_y = 0
         self.is_jumping = False
         

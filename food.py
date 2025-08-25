@@ -20,7 +20,7 @@ class Food(pygame.sprite.Sprite):
         self.animation_delay = 50
         
         # 食物飛行範圍限制（玩家能跳到的高度）
-        self.min_y = SCREEN_HEIGHT - 300  # 最高點（玩家跳躍能到達）
+        self.min_y = SCREEN_HEIGHT - 400  # 最高點（玩家跳躍能到達）
         self.max_y = SCREEN_HEIGHT - 100  # 最低點（接近地面）
 
     def constrain_movement(self):

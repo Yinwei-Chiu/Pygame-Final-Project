@@ -6,14 +6,22 @@ class User():
         self.bullet = 0
         self.level = 1
         self.max_level = 3
+        self.current_time = 0
         self.best_time = 0  # 最佳時間（毫秒）
         self.load_data()
 
-    def level_up(self):
+    def level_up(self,time):
         # 滿足條件時self.level+=1
         # self.level不能超過self.max_level
+        self.current_time+=time
         if self.level < self.max_level:
             self.level += 1
+        elif self.level == self.max_level:
+            if self.best_time == 0 or self.current_time < self.best_time:
+                self.best_time = self.current_time
+            self.level = 1
+            self.current_time = 0
+        
 
     def save_data(self):
         # 儲存使用者的資料
