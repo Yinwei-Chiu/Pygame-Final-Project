@@ -14,7 +14,3 @@ DARKSLATEBLUE = (72, 61, 139)
 DODERBLUE = (30, 144, 255)
 IVORY = (255, 255, 240)
 SANDYBROWN = (244, 164, 96)
-
-# 修改為使用存在的 man.png 檔案
-LIVES_ICON = pygame.transform.rotate(pygame.transform.scale(
-    pygame.image.load("Image/man.png"), (50, 35)), -90)

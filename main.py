@@ -10,7 +10,7 @@ pygame.init()
 pygame.font.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("台南美食大冒險 - Tainan Food Adventure")
+pygame.display.set_caption("台南，我吃一點 - Tainan, I eat some! ")
 clock = pygame.time.Clock()
 
 user = User()

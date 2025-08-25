@@ -1,6 +1,7 @@
 import pygame
 from bullet import Bullet
 from Config import *
+from LevelConfig import*
 
 # 載入角色圖片
 player_images = {
@@ -22,13 +23,13 @@ class Player(pygame.sprite.Sprite):
         self.speed = 10
         
         # 彈藥系統（取代原本的無限子彈）
-        self.ammo = 5          # 開始時有五雙筷子
+        self.ammo = 0          # 開始時有五雙筷子
         self.max_ammo = 10     # 最大湯匙數
         
         # 飢餓度系統
         self.hunger = 100      # 飢餓度，100為飽足，0為餓死
         self.max_hunger = 100
-        self.hunger_decay_rate = 3  # 每秒減少的飢餓度
+        self.hunger_decay_rate = 4  # 每秒減少的飢餓度
         self.last_hunger_time = pygame.time.get_ticks()
         
         # 踩車重擊系統
@@ -311,6 +312,6 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.ammo += 5
             return
-        if power.type == "turte_cake": # 龜苓膏 - 增加最大彈藥量
+        if power.type == "turtle_cake": # 龜苓膏 - 增加最大彈藥量
             self.max_ammo +=5
             return
