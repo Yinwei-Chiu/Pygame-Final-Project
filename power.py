@@ -28,6 +28,7 @@ class Power(pygame.sprite.Sprite):
         self.image = POWER_IMAGES[self.type]
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.speed = 1
+        self.hunger = 5 # 每個強化道具吃了恢復5點飢餓度
 
 
     def update(self):

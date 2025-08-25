@@ -179,6 +179,7 @@ class GameModel:
         power_collected = pygame.sprite.spritecollide(player, self.power_group, False)
         for power in power_collected:
             player.apply_power(power)
+            player.eat_food(power.hunger)
             self.animation_group.add(FoodExplosion(power.rect.centerx, power.rect.centery, 20))
             self.animation_group.add(Heal(power.rect.centerx, power.rect.centery, 100))
             power.kill()

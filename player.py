@@ -5,9 +5,11 @@ from Config import *
 # 載入角色圖片
 player_images = {
     "normal": pygame.transform.scale(
-        pygame.image.load("image/benz_cat/init.png"), (90, 60)), 
+        pygame.image.load("image/flower_cat/init.png"), (90, 60)), 
     "shooting": pygame.transform.scale(
-        pygame.image.load("image/benz_cat/shooting.png"), (90, 60))
+        pygame.image.load("image/flower_cat/shooting.png"), (90, 60)),
+    "eating": pygame.transform.scale(
+        pygame.image.load("image/flower_cat/eating.png"), (90, 60))
 }
 
 class Player(pygame.sprite.Sprite):
@@ -231,8 +233,13 @@ class Player(pygame.sprite.Sprite):
 
     def eat_food(self, food_value):
         """吃食物恢復飢餓度"""
-        hunger_restore = food_value   # 每個食物價值恢復10點飢餓度
+        self.change_image(player_images["eating"])
+        hunger_restore = food_value
         self.hunger = min(self.hunger + hunger_restore, self.max_hunger)
+        now = pygame.time.get_ticks()
+        if now - self.shoot_animation_time >= self.shoot_animation_duration:
+                # 動畫時間結束，回到普通狀態
+                self.change_image(player_images["normal"])
 
     def update_hunger(self):
         """更新飢餓度"""
