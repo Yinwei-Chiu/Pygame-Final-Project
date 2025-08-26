@@ -38,8 +38,8 @@ class InitMenu:
                 "遊戲中按Q鍵可隨時退出",
                 "Press P to start the game!"]
 
-        sizes = [40, 30, 30, 20, 20, 20, 30]
-        sizes *= 2
+        sizes = [48, 36, 36, 24, 24, 24, 36]
+        sizes *= 3
         colors = [(255,255,255), (255,255,255), (255,255,0),
                 (255,255,255), (255,255,255), (255,255,255), (255,255,0)]
 
@@ -52,8 +52,11 @@ class RightAlignedTextGroup:
     def __init__(self, texts, font_sizes, colors, width):
         self.surfaces = []
         self.width = width
-        for t, size, color in zip(texts, font_sizes, colors):            
-            font = pygame.font.Font("Font/BoutiqueBitmap9x9_Bold_1.9.ttf", size=size,)
+        for t, size, color in zip(texts, font_sizes, colors):
+            if(t =="台南，我吃一點" or t=="Tainan, I eat some"):
+                font = pygame.font.Font("Font/BoutiqueBitmap9x9_Bold_1.9.ttf", size=size+10,)
+            else:
+                font = pygame.font.Font("Font/Cubic_11.ttf", size=size,)
             self.surfaces.append(font.render(t, True, color))
 
     def draw(self, surface, pos):
