@@ -1215,10 +1215,6 @@
   ('socketserver',
    '/Users/chiu-yinwei/anaconda3/lib/python3.11/socketserver.py',
    'PYMODULE'),
-  ('spoon',
-   '/Users/chiu-yinwei/Documents/NCKU/Python and Interactive Game/Final '
-   'Project/Final-Project/spoon.py',
-   'PYMODULE'),
   ('ssl', '/Users/chiu-yinwei/anaconda3/lib/python3.11/ssl.py', 'PYMODULE'),
   ('statistics',
    '/Users/chiu-yinwei/anaconda3/lib/python3.11/statistics.py',
