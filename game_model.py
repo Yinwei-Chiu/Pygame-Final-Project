@@ -9,7 +9,6 @@ from animation import Explosion
 from animation import FoodExplosion
 from animation import Heal
 from progress import Progress
-from spoon import SpoonItem
 from power import Power
 import boss
 
@@ -66,7 +65,6 @@ class GameModel:
                 new_boss = boss.Boss(self.level,SCREEN_WIDTH + 150, boss_y, current_hp)
                 self.boss_group.add(new_boss)
         
-        self.spoon_group.update()
         self.game_time = pygame.time.get_ticks() - self.start_time if self.start_time > 0 else 0
         self.progress.update(self.game_time)
 
@@ -87,10 +85,7 @@ class GameModel:
                 self.food_group.add(food)
             else:
                 # 生成湯匙道具 - 從畫面上緣隨機位置掉落
-                spoon_x = random.randint(50, SCREEN_WIDTH - 50)
-                spoon_y = -50
-                spoon = SpoonItem(spoon_x, spoon_y)
-                self.spoon_group.add(spoon)
+                self.power_group.add(Power(random.randint(50, SCREEN_WIDTH - 50), -30,chopsticks=True))
                 
             self.food_generator_time = now
             self.food_generator_delay = random.randint(*self.config["enemy_delay"])
@@ -122,13 +117,7 @@ class GameModel:
                         self.power_group.add(Power(food.rect.centerx, food.rect.centery))
 
                     food.kill()
-        # 玩家直接碰觸美食 - 吃食物恢復飢餓度
-        # foods_collected = pygame.sprite.spritecollide(player, self.food_group, True)
-        # for food in foods_collected:
-        #     player.eat_food(food.hunger)
-        #     self.animation_group.add(FoodExplosion(food.rect.centerx, food.rect.centery, 150))
 
-        # Boss碰撞檢測 - 在地面=死亡，跳躍=踩車
         if self.boss_group.sprite:
             boss = self.boss_group.sprite
             boss_collision = pygame.sprite.spritecollide(player, self.boss_group, False)
@@ -169,19 +158,14 @@ class GameModel:
                     player.lives = 0
                     self.animation_group.add(Explosion(player.rect.centerx, player.rect.centery, 100))
 
-        # 玩家收集湯匙道具
-        spoons_collected = pygame.sprite.spritecollide(player, self.spoon_group, True)
-        for spoon in spoons_collected:
-            player.add_ammo(spoon.value)
-            self.animation_group.add(FoodExplosion(spoon.rect.centerx, spoon.rect.centery, 30))
-
         #收集其他道具
         power_collected = pygame.sprite.spritecollide(player, self.power_group, False)
         for power in power_collected:
             player.apply_power(power)
             player.eat_food(power.hunger)
             self.animation_group.add(FoodExplosion(power.rect.centerx, power.rect.centery, 20))
-            self.animation_group.add(Heal(power.rect.centerx, power.rect.centery, 100))
+            if power.type != "chopsticks":
+                self.animation_group.add(Heal(power.rect.centerx, power.rect.centery, 100))
             power.kill()
 
     def check_for_state(self):

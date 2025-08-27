@@ -1,4 +1,5 @@
 import pygame
+import random
 from bullet import Bullet
 from Config import *
 from LevelConfig import*
@@ -23,8 +24,8 @@ class Player(pygame.sprite.Sprite):
         self.speed = 10
         
         # 彈藥系統（取代原本的無限子彈）
-        self.ammo = 0          # 開始時有五雙筷子
-        self.max_ammo = 10     # 最大湯匙數
+        self.ammo = 0          # 開始時有雙筷子
+        self.max_ammo = 10     # 最大筷子數
         
         # 飢餓度系統
         self.hunger = 100      # 飢餓度，100為飽足，0為餓死
@@ -314,4 +315,11 @@ class Player(pygame.sprite.Sprite):
             return
         if power.type == "turtle_cake": # 龜苓膏 - 增加最大彈藥量
             self.max_ammo +=5
+            return
+        if power.type == "chopsticks": # 筷子 - 增加一雙筷子
+            ammo_added = random.randint(1,3)
+            if self.ammo +ammo_added >= self.max_ammo:
+                self.ammo = self.max_ammo
+            else:
+                self.ammo += ammo_added
             return
